@@ -91,6 +91,8 @@ func main() {
 	if err := c.WriteJSON(doReload); err != nil {
 		log.Fatalf("could not reload app with RPC DoReload call: %v", err)
 	}
-
+	if err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, "")); err != nil {
+		log.Fatalf("error clsing WS connection: %v", err)
+	}
 	wg.Wait()
 }
