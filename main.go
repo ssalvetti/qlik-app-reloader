@@ -97,18 +97,18 @@ func main() {
 		log.Fatalf("could not reload app with RPC DoReload call: %v", err)
 	}
 
-	// save App
-	doSave := &qlikRPCrequest{
-		json:   "2.0",
-		id:     3,
-		method: "DoSave",
-		handle: 1,
-		params: []string{},
-	}
-	log.Println("calling RPC doSave")
-	if err := c.WriteJSON(doSave); err != nil {
-		log.Fatalf("could not save app with RPC DoSave call: %v", err)
-	}
+	// // save App
+	// doSave := &qlikRPCrequest{
+	// 	json:   "2.0",
+	// 	id:     3,
+	// 	method: "DoSave",
+	// 	handle: 1,
+	// 	params: []string{},
+	// }
+	// log.Println("calling RPC doSave")
+	// if err := c.WriteJSON(doSave); err != nil {
+	// 	log.Fatalf("could not save app with RPC DoSave call: %v", err)
+	// }
 
 	// say bye to WebSocket
 	if err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, "")); err != nil {
