@@ -88,6 +88,7 @@ func main() {
 		id:     2,
 		method: "DoReload",
 		handle: 1,
+		params: []string{},
 	}
 	log.Println("calling RPC doReload")
 	if err := c.WriteJSON(doReload); err != nil {
