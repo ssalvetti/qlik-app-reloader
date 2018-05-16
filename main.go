@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/url"
 	"sync"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -116,4 +117,6 @@ func main() {
 	}
 
 	wg.Wait()
+	time.Sleep(time.Millisecond * 250)
+	close(reply)
 }
