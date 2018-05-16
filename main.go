@@ -77,7 +77,7 @@ func main() {
 		id:     1,
 		method: "OpenDoc",
 		handle: -1,
-		params: []string{*app, "", "", "", "true"},
+		params: []string{*app},
 	}
 	log.Println("calling RPC openDoc")
 	if err := c.WriteJSON(openDoc); err != nil {
