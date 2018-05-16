@@ -53,7 +53,7 @@ func main() {
 				wg.Done()
 				return
 			case mex := <-reply:
-				log.Println("WS message ", mex)
+				log.Println("WS message ", string(mex))
 			}
 		}
 	}()
