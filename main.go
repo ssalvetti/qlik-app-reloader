@@ -65,7 +65,7 @@ func main() {
 			_, mex, err := c.ReadMessage()
 			if err != nil {
 				log.Printf("error reading from WS conn: %v", err)
-				continue
+				return
 			}
 			reply <- mex
 		}
@@ -78,6 +78,7 @@ func main() {
 		handle: -1,
 		params: []string{*app},
 	}
+	log.Println("calling RPC openDoc")
 	if err := c.WriteJSON(openDoc); err != nil {
 		log.Fatalf("could not open the document with RPC OpenDoc call: %v", err)
 	}
@@ -88,6 +89,7 @@ func main() {
 		method: "DoReload",
 		handle: 1,
 	}
+	log.Println("calling RPC doReload")
 	if err := c.WriteJSON(doReload); err != nil {
 		log.Fatalf("could not reload app with RPC DoReload call: %v", err)
 	}
