@@ -64,8 +64,8 @@ func main() {
 		for {
 			_, mex, err := c.ReadMessage()
 			if err != nil {
-				log.Printf("errore reading from WS conn: %v", err)
-				return
+				log.Printf("error reading from WS conn: %v", err)
+				continue
 			}
 			reply <- mex
 		}
@@ -92,7 +92,7 @@ func main() {
 		log.Fatalf("could not reload app with RPC DoReload call: %v", err)
 	}
 	if err := c.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, "")); err != nil {
-		log.Fatalf("error clsing WS connection: %v", err)
+		log.Fatalf("error closing WS connection: %v", err)
 	}
 	wg.Wait()
 }
